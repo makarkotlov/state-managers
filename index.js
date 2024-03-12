@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import {App} from './AppNew2';
+import {AppMobx} from './src/mobx/AppMobx';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => AppMobx);
