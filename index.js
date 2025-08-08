@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import {App} from './AppNew2';
 import {name as appName} from './app.json';
+import {AppContext} from './src/signals/AppContext';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => AppContext);
