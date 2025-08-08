@@ -1,5 +1,5 @@
 import {atom} from 'jotai';
 
-export const rightStateAtom = atom({
+export const staticAtom = atom<{staticField: number}>({
   staticField: 0,
 });

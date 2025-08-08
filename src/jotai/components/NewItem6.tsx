@@ -1,12 +1,21 @@
 import React, {FC, useRef} from 'react';
 import {Button, Text, View} from 'react-native';
-import {rightStateAtom} from '../stores/rightStore';
-import {useAtom} from 'jotai';
-import {leftStateAtom} from '../stores/leftStore';
+import {staticAtom} from '../stores/rightStore';
+import {useAtom, useSetAtom} from 'jotai';
+import {
+  field1Atom,
+  field2Atom,
+  field3Atom,
+  field4Atom,
+} from '../stores/leftStore';
 
 export const NewItem6: FC = () => {
-  const [{staticField}] = useAtom(rightStateAtom);
-  const [, setData] = useAtom(leftStateAtom);
+  const [{staticField}] = useAtom(staticAtom);
+
+  const incrementField1 = useSetAtom(field1Atom);
+  const incrementField2 = useSetAtom(field2Atom);
+  const incrementField3 = useSetAtom(field3Atom);
+  const incrementField4 = useSetAtom(field4Atom);
 
   const rerender = useRef(0);
   rerender.current++;
@@ -16,16 +25,24 @@ export const NewItem6: FC = () => {
       <Button
         onPress={() => {
           setTimeout(() => {
-            setData({field1: 'lol1'});
+            incrementField1(prev => ({
+              field1: prev.field1 ? prev.field1 + 1 : '1',
+            }));
           }, 500);
           setTimeout(() => {
-            setData({field2: 'lol2'});
+            incrementField2(prev => ({
+              field2: prev.field2 ? prev.field2 + 2 : '2',
+            }));
           }, 1000);
           setTimeout(() => {
-            setData({field3: 'lol3'});
+            incrementField3(prev => ({
+              field3: prev.field3 ? prev.field3 + 3 : '3',
+            }));
           }, 1500);
           setTimeout(() => {
-            setData({field4: 'lol4'});
+            incrementField4(prev => ({
+              field4: prev.field4 ? prev.field4 + 4 : '4',
+            }));
           }, 2000);
         }}
         title={'Create the items'}

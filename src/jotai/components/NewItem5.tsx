@@ -1,10 +1,10 @@
 import {useAtom} from 'jotai';
 import React, {FC, useRef} from 'react';
 import {Button, Text, View} from 'react-native';
-import {leftStateAtom} from '../stores/leftStore';
+import {field4Atom} from '../stores/leftStore';
 
 export const NewItem5: FC = () => {
-  const [{field4}, setData] = useAtom(leftStateAtom);
+  const [{field4}, setField4] = useAtom(field4Atom);
 
   const rerender = useRef(0);
   rerender.current++;
@@ -12,8 +12,10 @@ export const NewItem5: FC = () => {
   return (
     <View>
       <Button
-        onPress={() => setData({field4: field4 ? field4 + 4 : '4'})}
-        // onPress={() => setField4()}
+        onPress={() => {
+          setField4(prev => ({field4: prev.field4 ? prev.field4 + 4 : '4'}));
+        }}
+        // onPress={() => setField1()}
         title={'Create the items'}
       />
       <View style={{flexDirection: 'row'}}>

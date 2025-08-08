@@ -1,10 +1,12 @@
+import {useAtom, useAtomValue} from 'jotai';
 import React, {FC, useRef} from 'react';
 import {Button, Text, View} from 'react-native';
-import {useAtom} from 'jotai';
-import {leftStateAtom} from '../stores/leftStore';
+import {field1Atom, field2Atom} from '../stores/leftStore';
 
 export const NewItem2: FC = () => {
-  const [{field2}, setData] = useAtom(leftStateAtom);
+  const {fieldLol} = useAtomValue(field1Atom);
+
+  // const [{field2}, setField2] = useAtom(field2Atom);
 
   const rerender = useRef(0);
   rerender.current++;
@@ -12,13 +14,15 @@ export const NewItem2: FC = () => {
   return (
     <View>
       <Button
-        onPress={() => setData({field2: field2 ? field2 + 2 : '2'})}
-        // onPress={() => setField2()}
+        onPress={() => {
+          // setField2(prev => ({field2: prev.field2 ? prev.field2 + 2 : '2'}));
+        }}
+        // onPress={() => setField1()}
         title={'Create the items'}
       />
       <View style={{flexDirection: 'row'}}>
-        <Text>Field 2</Text>
-        <Text>{field2}</Text>
+        <Text>Field LOL</Text>
+        <Text>{fieldLol}</Text>
       </View>
       <View style={{flexDirection: 'row'}}>
         <Text>Rerender count</Text>
