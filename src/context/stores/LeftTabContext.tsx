@@ -1,5 +1,7 @@
 import React, {Dispatch, SetStateAction, useMemo, useState} from 'react';
 
+import {createContext} from 'use-context-selector';
+
 type Data = {
   field1?: string;
   setField1: Dispatch<SetStateAction<undefined | string>>;
@@ -11,11 +13,9 @@ type Data = {
   setField4: Dispatch<SetStateAction<undefined | string>>;
 };
 
-type ListContextType = Data;
+export type ListContextType = Data;
 
-export const LeftTabNewContext = React.createContext<ListContextType>(
-  {} as ListContextType,
-);
+export const LeftTabNewContext = createContext<ListContextType>();
 
 export const LeftTabNewContextProvider = (props: {
   children: React.ReactNode;

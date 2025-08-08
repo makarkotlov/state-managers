@@ -1,12 +1,14 @@
 import React, {useMemo, useRef} from 'react';
 
+import {createContext} from 'use-context-selector';
+
 type Data = {
   staticField?: number;
 };
 
 type ListContextType = Data;
 
-export const RightTabNewContext = React.createContext<ListContextType>();
+export const RightTabNewContext = createContext<ListContextType>();
 
 export const RightTabNewContextProvider = (props: {
   children: React.ReactNode;
